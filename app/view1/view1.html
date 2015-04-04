@@ -1,3 +1,60 @@
-<p>This is the partial for view 1.</p>
+<!doctype html>
+<html>
+    <head>
+        <!-- <link href='css/custom.css' rel='stylesheet'> -->
 
-Ground control to Major Tom.
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+        <script type='text/javascript' src='js/solar_calculator.js'></script>
+        <script type='text/javascript' src='js/result.js'></script>
+
+        <script type='text/javascript'>
+          google.load('visualization', '1', {packages:['corechart']});
+          // Call the function
+          google.setOnLoadCallback(calculateCashflows);
+        </script>
+    </head>
+
+    <body>
+      <div class='outer-container'>
+      <div class='header-bar'>Solar Cashflow Estimator </div>
+      <div class='first-text'>Sunny Meadows Solar Farm </div>
+
+      <div class='chart-container'>
+          <span id='monthly-payment-result'> $450,000</span>
+          <div id='donutchart' > </div>
+      </div>
+
+      <div class='numeric-outputs-div'>
+        <div class='numeric-outputs-centering-div'>
+        <!-- result divs are inserted here dynamically by JS -->
+        </div>
+      </div>
+
+      <div class='sliders-div'>
+
+        <div id='slider-box-template' class='slider-box'>
+            <div class='slider-title'>Project Cost ($) </div>
+            <div class='slider-data-num' id='home-price-result' >$140k </div>
+            <div>
+              <input id='home-price-slider' class='mySlider' type='range' min='0' max='2000000' value='400000' step='0.5' />
+            </div>
+        </div>
+
+        <div id='test2' class='slider-box'>
+            <div class='slider-title'>Owner Equity (%) </div>
+            <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
+            </div>
+            <div class='slider-data-num' id='down-payment-result'>$80k </div>
+        </div>
+
+        <div id='test3' class='slider-box'>
+            <div class='slider-title'>Interest Rate (WACC) (%) </div>
+            <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
+            </div>
+            <div class='slider-data-num' id='interest-rate-result'>4.50% </div>
+        </div>
+
+      </div> <!-- sliders-div -->
+
+    </body>
+</html>
