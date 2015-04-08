@@ -74,8 +74,11 @@
         <br>
 
         <ul>
-          <li ng-repeat="x in calculator.results">
-          {{ x.outputLabel + ', ' + x.value }}</li>
+          <div class='result-cost' ng-repeat="x in calculator.results">
+              $ {{x.value}}
+              <br>
+              {{x.outputLabel}}
+          </div>
         </ul>
 
       </div>
@@ -91,14 +94,14 @@
 
     <div class='numeric-outputs-div'>
 
-    <div class='numeric-outputs-centering-div'>
-      <!-- result divs are inserted here dynamically by JS -->
-    </div>
+      <div class='numeric-outputs-centering-div'>
+        <!-- result divs are inserted here dynamically by JS -->
+      </div>
 
-    <!-- test -->
-    <div class='numeric-outputs-centering-div'>
-      <!-- result divs are inserted here dynamically by JS -->
-    </div>
+      <!-- test -->
+      <div class='numeric-outputs-centering-div'>
+        <!-- result divs are inserted here dynamically by JS -->
+      </div>
 
     </div>
 
