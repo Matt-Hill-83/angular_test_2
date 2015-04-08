@@ -9,11 +9,13 @@ angular.module('testService', [])
   // var convert = function (amount, inCurr, outCurr) {
   //   return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
   // };
-
+  //
   var names = [
   {name:'Jani',country:'Norway'},
   {name:'Hege',country:'Sweden'},
   {name:'Kai',country:'Denmark'}];
+
+  var names = names;
 
   return {
     // currencies: currencies,

@@ -160,6 +160,12 @@ function calculateCashflows() {
     updatePieChart();
   };
 
+  // Create global to talk to service
+  names = [
+  {name:'Yankovik',country:'Norway'},
+  {name:'Hege',country:'Sweden'},
+  {name:'Kai',country:'Denmark'}];
+
   // Run these after the html loads.
   setUpUiEvents();
   setGraphOptions();

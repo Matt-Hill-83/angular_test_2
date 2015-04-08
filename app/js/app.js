@@ -13,12 +13,7 @@ angular.module('myApp', ['testService'])
     CNY: 6.09
   };
 
-  this.names = [
-  {name:'Jani',country:'Norway'},
-  {name:'Hege',country:'Sweden'},
-  {name:'Kai',country:'Denmark'}];
-
-  // this.names = otherFunc.names;
+  this.names = otherFunc.names;
 
   this.total = function total(outCurr) {
     return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
