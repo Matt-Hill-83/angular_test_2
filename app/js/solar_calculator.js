@@ -1,3 +1,10 @@
+// Create global to talk to service
+myNames = [
+{name:'Yankovik',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}];
+
+
 // Monkey patch in new function on String.prototype to format currency numbers
 String.prototype.insertComma = function() {
   // Remove number past decimal.
@@ -159,12 +166,6 @@ function calculateCashflows() {
     parseDataForPieChart();
     updatePieChart();
   };
-
-  // Create global to talk to service
-  names = [
-  {name:'Yankovik',country:'Norway'},
-  {name:'Hege',country:'Sweden'},
-  {name:'Kai',country:'Denmark'}];
 
   // Run these after the html loads.
   setUpUiEvents();

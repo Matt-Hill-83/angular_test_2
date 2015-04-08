@@ -10,12 +10,11 @@ angular.module('testService', [])
   //   return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
   // };
   //
-  var names = [
-  {name:'Jani',country:'Norway'},
-  {name:'Hege',country:'Sweden'},
-  {name:'Kai',country:'Denmark'}];
 
-  var names = names;
+  // Grab names from global variable
+  var names = myNames;
+
+// console.log(myNames);
 
   return {
     // currencies: currencies,
