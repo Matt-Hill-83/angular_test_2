@@ -1,8 +1,8 @@
 // Create global to talk to service
-myNames = [
-{name:'Yankovik',country:'Norway'},
-{name:'Hege',country:'Sweden'},
-{name:'Kai',country:'Denmark'}];
+monthlyResults = [
+{outputLabel:'O+M',value:'9999'},
+{outputLabel:'Hege',value:'Sweden'},
+{outputLabel:'Kai',value:'Denmark'}];
 
 
 // Monkey patch in new function on String.prototype to format currency numbers
@@ -100,7 +100,6 @@ function calculateCashflows() {
     var numOverDenom = numerator/denominator;
     this.monthlyPayment = loanAmount * numOverDenom;
     this.monthlyPaymentStr = monthlyPayment.toFixed(0).insertComma();
-
   };
 
   function appendSubPaymentResultDomElements(result){
@@ -134,6 +133,25 @@ function calculateCashflows() {
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
       appendSubPaymentResultDomElements(r);
     };
+
+    // Put subpayment information in global to be passed to services.
+    monthlyResults = [];
+    for(var i = 0; i<this.resultsArray.length; i++){
+      r = resultsArray[i];
+      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
+
+      var newResult = {};
+      newResult['outputLabel'] = r.name;
+      newResult['value'] = r.value.toFixed(0).insertComma();
+
+      monthlyResults.push(newResult);
+      $("#hidden-button").click();
+
+    };
+
+    console.log(monthlyResults);
+
+
   };
 
   function parseDataForPieChart(){

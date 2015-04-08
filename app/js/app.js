@@ -13,7 +13,7 @@ angular.module('myApp', ['testService'])
     CNY: 6.09
   };
 
-  this.names = otherFunc.names;
+  this.results = monthlyResults;
 
   this.total = function total(outCurr) {
     return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
@@ -22,6 +22,6 @@ angular.module('myApp', ['testService'])
     return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
   };
   this.pay = function pay() {
-    window.alert("Thanks!");
+    this.results = monthlyResults;
   };
 }]);

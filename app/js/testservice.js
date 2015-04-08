@@ -12,9 +12,9 @@ angular.module('testService', [])
   //
 
   // Grab names from global variable
-  var names = myNames;
+  var names = monthlyResults;
 
-// console.log(myNames);
+// console.log(monthlyResults);
 
   return {
     // currencies: currencies,
