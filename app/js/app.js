@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp', [])
-.controller('TestController', function() {
+angular.module('myApp', ['testService'])
+.controller('TestController', ['otherFunc',  function(otherFunc) {
   this.qty = 1;
   this.mycost = 99;
   this.cost = 2;
@@ -18,6 +18,8 @@ angular.module('myApp', [])
   {name:'Hege',country:'Sweden'},
   {name:'Kai',country:'Denmark'}];
 
+  // this.names = otherFunc.names;
+
   this.total = function total(outCurr) {
     return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
   };
@@ -27,4 +29,4 @@ angular.module('myApp', [])
   this.pay = function pay() {
     window.alert("Thanks!");
   };
-});
+}]);
