@@ -1,111 +1,132 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/custom.css">
 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Solar Cashflow Calculator</title>
+    <meta name="description" content="">
 
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
 
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 
-  <!-- My links -->
-  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-  <script type='text/javascript' src='js/solar_calculator.js'></script>
-  <script type='text/javascript' src='js/result.js'></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript' src='js/solar_calculator.js'></script>
+    <script type='text/javascript' src='js/result.js'></script>
 
-  <script type='text/javascript'>
-    google.load('visualization', '1', {packages:['corechart']});
-    // Call the function
-    google.setOnLoadCallback(calculateCashflows);
-  </script>
-  <!-- My links -->
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['corechart']});
+      // Call the function
+      google.setOnLoadCallback(calculateCashflows);
+    </script>
 
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+    <script src="js/app.js"></script>
+    <script src="js/result.js"></script>
+    <script src="js/solar_calculator.js"></script>
 
-  <div ng-view></div>
+    <script src="view1/view1.js"></script>
+    <script src="view2/view2.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  </head>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-
-  <script src="js/app.js"></script>
-  <script src="js/result.js"></script>
-  <script src="js/solar_calculator.js"></script>
-
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-
-
-
-  <div class='outer-container'>
-  <div class='header-bar'>Solar Cashflow Estimator </div>
-  <div class='first-text'>Sunny Meadows Solar Farm </div>
-
-  <div class='chart-container'>
-    <span id='monthly-payment-result'> $450,000</span>
-    <div id='donutchart' > </div>
-  </div>
-
-  <div class='numeric-outputs-div'>
-  <div class='numeric-outputs-centering-div'>
-  <!-- result divs are inserted here dynamically by JS -->
-  </div>
-  </div>
-
-  <div class='sliders-div'>
-
-  <div id='slider-box-template' class='slider-box'>
-      <div class='slider-title'>Project Cost ($) </div>
-      <div class='slider-data-num' id='home-price-result' >$140k </div>
+  <body ng-app="invoice1" >
+      <b>Invoice:</b>
       <div>
-        <input id='home-price-slider' class='mySlider' type='range' min='0' max='2000000' value='400000' step='0.5' />
+        Quantity: <input type="number" min="0" ng-model="qty">
       </div>
-  </div>
-
-  <div id='test2' class='slider-box'>
-      <div class='slider-title'>Owner Equity (%) </div>
-      <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
+      <div>
+        Costs: <input type="number" min="0" ng-model="cost">
       </div>
-      <div class='slider-data-num' id='down-payment-result'>$80k </div>
-  </div>
-
-  <div id='test3' class='slider-box'>
-      <div class='slider-title'>Interest Rate (WACC) (%) </div>
-      <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
+      <div>
+        <b>Total:</b> {{qty * cost | currency}}
       </div>
-      <div class='slider-data-num' id='interest-rate-result'>4.50% </div>
-  </div>
 
-  </div> <!-- sliders-div -->
-  
+      <div  ng-controller="InvoiceController as invoice">
+        <b>Invoice:</b>
+        <div>
+          Quantity: <input type="number" min="0" ng-model="invoice.qty" required >
+        </div>
+        <div>
+          Costs: <input type="number" min="0" ng-model="invoice.cost" required >
+          <select ng-model="invoice.inCurr">
+            <option ng-repeat="c in invoice.currencies">{{c}}</option>
+          </select>
+        </div>
+        <div>
+          <b>Total:</b>
+          <span ng-repeat="c in invoice.currencies">
+            {{invoice.total(c) | currency:c}}
+          </span>
+          <button class="btn" ng-click="invoice.pay()">Pay</button>
+        </div>
+      </div>
 
 
 
-</body>
+
+
+
+    <div class='outer-container'>
+    <div class='header-bar'>Solar Cashflow Estimator </div>
+    <div class='first-text'>Sunny Meadows Solar Farm </div>
+
+    <div class='chart-container'>
+      <span id='monthly-payment-result'> $450,000</span>
+      <div id='donutchart' > </div>
+    </div>
+
+    <div class='numeric-outputs-div'>
+
+    <div class='numeric-outputs-centering-div'>
+      <!-- result divs are inserted here dynamically by JS -->
+    </div>
+
+    <!-- test -->
+    <div class='numeric-outputs-centering-div'>
+      <!-- result divs are inserted here dynamically by JS -->
+    </div>
+
+    </div>
+
+    <div class='sliders-div'>
+
+    <div id='slider-box-template' class='slider-box'>
+        <div class='slider-title'>Project Cost ($) </div>
+        <div class='slider-data-num' id='home-price-result' >$140k </div>
+        <div>
+          <input id='home-price-slider' class='mySlider' type='range' min='0' max='2000000' value='400000' step='0.5' />
+        </div>
+    </div>
+
+    <div id='test2' class='slider-box'>
+        <div class='slider-title'>Owner Equity (%) </div>
+        <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
+        </div>
+        <div class='slider-data-num' id='down-payment-result'>$80k </div>
+    </div>
+
+    <div id='test3' class='slider-box'>
+        <div class='slider-title'>Interest Rate (WACC) (%) </div>
+        <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
+        </div>
+        <div class='slider-data-num' id='interest-rate-result'>4.50% </div>
+    </div>
+
+    </div> <!-- sliders-div -->
+
+  </body>
 </html>
