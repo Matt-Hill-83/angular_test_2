@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="invoice1">
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,8 +45,7 @@
 
   <body>
 
-      <div  ng-controller="InvoiceController as invoice">
-        <b>Invoice:</b>
+      <div  ng-controller="TestController as invoice">
         <div>
           Quantity: <input type="number" min="0" ng-model="invoice.qty" required >
         </div>
@@ -63,6 +62,17 @@
           </span>
           <button class="btn" ng-click="invoice.pay()">Pay</button>
         </div>
+
+        <div style="width:600px;" ng-controller="TestController">
+          <!-- <slider floor="100" ceiling="1000" step="50" precision="2" ng-model="mycost"></slider> -->
+        </div>
+
+        <br>
+        <br>
+        Costs: <input type="number" min="0" ng-model="invoice.mycost">
+        <b>my cost: {{invoice.mycost}}</b>
+
+
       </div>
 
 

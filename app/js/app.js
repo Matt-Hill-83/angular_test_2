@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('invoice1', [])
-.controller('InvoiceController', function() {
+angular.module('myApp', [])
+.controller('TestController', function() {
   this.qty = 1;
+  this.mycost = 99;
   this.cost = 2;
   this.inCurr = 'EUR';
   this.currencies = ['USD', 'EUR', 'CNY'];
