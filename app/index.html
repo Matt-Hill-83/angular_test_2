@@ -46,6 +46,7 @@
   <body>
 
       <div  ng-controller="TestController as invoice">
+
         <div>
           Quantity: <input type="number" min="0" ng-model="invoice.qty" required >
         </div>
@@ -63,22 +64,20 @@
           <button class="btn" ng-click="invoice.pay()">Pay</button>
         </div>
 
-        <div style="width:600px;" ng-controller="TestController">
-          <!-- <slider floor="100" ceiling="1000" step="50" precision="2" ng-model="mycost"></slider> -->
-        </div>
-
         <br>
         <br>
         Costs: <input type="number" min="0" ng-model="invoice.mycost">
         <b>my cost: {{invoice.mycost}}</b>
+        <br>
 
+        <b>my cost: {{invoice.names[0].name}}</b>
+
+        <ul>
+          <li ng-repeat="x in invoice.names">
+          {{ x.name + ', ' + x.country }}</li>
+        </ul>
 
       </div>
-
-
-
-
-
 
     <div class='outer-container'>
     <div class='header-bar'>Solar Cashflow Estimator </div>
