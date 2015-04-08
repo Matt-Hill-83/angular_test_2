@@ -46,42 +46,9 @@
 
   </head>
 
-  <body>
-
-      <div  ng-controller="TestController as calculator">
-
-        <div>
-          Quantity: <input type="number" min="0" ng-model="calculator.qty" required >
-        </div>
-        <div>
-          Costs: <input type="number" min="0" ng-model="calculator.cost" required >
-          <select ng-model="calculator.inCurr">
-            <option ng-repeat="c in calculator.currencies">{{c}}</option>
-          </select>
-        </div>
-        <div>
-          <b>Total:</b>
-          <span ng-repeat="c in calculator.currencies">
-            {{calculator.total(c) | currency:c}}
-          </span>
-          <button id='hidden-button' class="btn" ng-click="calculator.pay()">Pay</button>
-        </div>
-
-        <br>
-        <br>
-        Costs: <input type="number" min="0" ng-model="calculator.mycost">
-        <b>my cost: {{calculator.mycost}}</b>
-        <br>
-
-        <ul>
-          <div class='result-cost' ng-repeat="x in calculator.results">
-              $ {{x.value}}
-              <br>
-              {{x.outputLabel}}
-          </div>
-        </ul>
-
-      </div>
+  <body ng-controller="TestController as calculator">
+    <!-- This button is a hack to get my directives to trigger -->
+    <button id='hidden-button' class="btn hidden-button" ng-click="calculator.pay()">Pay</button>
 
     <div class='outer-container'>
     <div class='header-bar'>Solar Cashflow Estimator </div>
@@ -93,16 +60,30 @@
     </div>
 
     <div class='numeric-outputs-div'>
-
       <div class='numeric-outputs-centering-div'>
         <!-- result divs are inserted here dynamically by JS -->
       </div>
+    </div>
 
-      <!-- test -->
-      <div class='numeric-outputs-centering-div'>
-        <!-- result divs are inserted here dynamically by JS -->
+
+
+    <div class='numeric-outputs-div'>
+      <div class='numeric-outputs-centering-div2'>
+        <!-- result divs are inserted here dynamically by Angular. -->
+
+
+
+        <ul>
+          <div class='result-cost' ng-repeat="x in calculator.results">
+              $ {{x.value}}
+              <br>
+              {{x.outputLabel}}
+          </div>
+        </ul>
+
+
+        
       </div>
-
     </div>
 
     <div class='sliders-div'>

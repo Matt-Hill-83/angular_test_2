@@ -98,7 +98,7 @@ function calculateCashflows() {
     var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
     var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
     var numOverDenom = numerator/denominator;
-    this.monthlyPayment = loanAmount * numOverDenom;
+    this.monthlyPayment = loanAmount * numOverDenom/10;
     this.monthlyPaymentStr = monthlyPayment.toFixed(0).insertComma();
   };
 
@@ -110,7 +110,6 @@ function calculateCashflows() {
     var name = r.name;
     div.innerHTML = "$" + cost + "<br>" + name;
     var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
-
 
     parent.appendChild(div);
   }
