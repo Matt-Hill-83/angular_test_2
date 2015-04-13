@@ -44,9 +44,19 @@
     <script src="components/version/version-directive.js"></script>
     <script src="components/version/interpolate-filter.js"></script>
 
+
   </head>
 
   <body ng-controller="TestController as calculator">
+
+
+
+    <h3>A demonstration of how to access a Slider Control</h3>
+
+    <input type="range" id="myRange" ng-model='calculator.priceSlider'>
+
+    <p>Slider Value:  {{calculator.priceSlider}}.</p>
+
 
       <b>Invoice:</b>
       <div>

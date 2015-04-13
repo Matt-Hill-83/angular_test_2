@@ -31,6 +31,8 @@ angular.module('myApp', ['testService', 'finance2'])
   this.inCurr = 'EUR';
   this.currencies = currencyConverter.currencies;
 
+  this.priceSlider = 53;
+
   this.total = function total(outCurr) {
     return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
   };
