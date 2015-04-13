@@ -1,27 +1,45 @@
 'use strict';
 
-angular.module('myApp', ['testService'])
-.controller('TestController', ['otherFunc',  function(otherFunc) {
+angular.module('myApp', ['testService', 'finance2'])
+// .controller('TestController', ['otherFunc',  function(otherFunc) {
+//   this.qty = 1;
+//   this.mycost = 99;
+//   this.cost = 2;
+//   this.inCurr = 'EUR';
+//   this.currencies = ['USD', 'EUR', 'CNY'];
+//   this.usdToForeignRates = {
+//     USD: 1,
+//     EUR: 0.74,
+//     CNY: 6.09
+//   };
+//
+//   this.results = monthlyResults;
+//
+//   this.total = function total(outCurr) {
+//     return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
+//   };
+//   this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
+//     return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
+//   };
+//   this.pay = function pay() {
+//     this.results = monthlyResults;
+//   };
+
+.controller('TestController', ['currencyConverter', function(currencyConverter) {
   this.qty = 1;
-  this.mycost = 99;
   this.cost = 2;
   this.inCurr = 'EUR';
-  this.currencies = ['USD', 'EUR', 'CNY'];
-  this.usdToForeignRates = {
-    USD: 1,
-    EUR: 0.74,
-    CNY: 6.09
-  };
-
-  this.results = monthlyResults;
+  this.currencies = currencyConverter.currencies;
 
   this.total = function total(outCurr) {
-    return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);
-  };
-  this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
-    return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
+    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
   };
   this.pay = function pay() {
-    this.results = monthlyResults;
+    window.alert("Thanks!");
   };
+
+
+
+
+
 }]);

@@ -34,9 +34,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
 
     <script src="js/testservice.js"></script>
+    <script src="js/finance2.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/result.js"></script>
-    <script src="js/solar_calculator.js"></script>
+
 
     <script src="view1/view1.js"></script>
     <script src="view2/view2.js"></script>
@@ -47,6 +47,28 @@
   </head>
 
   <body ng-controller="TestController as calculator">
+
+      <b>Invoice:</b>
+      <div>
+        Quantity: <input type="number" min="0" ng-model="calculator.qty" required >
+      </div>
+      <div>
+        Costs: <input type="number" min="0" ng-model="calculator.cost" required >
+        <select ng-model="calculator.inCurr">
+          <option ng-repeat="c in calculator.currencies">{{c}}</option>
+        </select>
+      </div>
+      <div>
+        <b>Total:</b>
+        <span ng-repeat="c in calculator.currencies">
+          {{calculator.total(c) | currency:c}}
+        </span>
+        <button class="btn" ng-click="calculator.pay()">Pay</button>
+      </div>
+
+
+
+
     <!-- This button is a hack to get my directives to trigger -->
     <button id='hidden-button' class="btn hidden-button" ng-click="calculator.pay()">Pay</button>
 
@@ -82,7 +104,7 @@
         </ul>
 
 
-        
+
       </div>
     </div>
 
