@@ -7,12 +7,11 @@ angular.module('myApp', ['testService', 'subModule'])
   this.inputsArray = solarCalculator.initializeInputsDisplays();
   this.inputsHash = solarCalculator.createInputsHash(this.inputsArray);
   this.annualIncome = solarCalculator.calcAnnualIncome(this.inputsHash);
-  this.monthlyPayment = solarCalculator.calcAnnualExpenses();
+  this.annualExpensesTotal = solarCalculator.calcAnnualExpenses();
 
   this.calcAnnualExpenses = function calcAnnualExpenses(){
-    this.monthlyPayment = solarCalculator.calcAnnualExpenses();
+    this.annualExpensesTotal = solarCalculator.calcAnnualExpenses();
     this.annualIncome = solarCalculator.calcAnnualIncome(this.inputsHash);
-
+    this.subExpensesArray = solarCalculator.calcAnnualSubExpenses();
   };
-  // this.resultsArray = solarCalculator.calcResults();
 }]);

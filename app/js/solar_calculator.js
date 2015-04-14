@@ -43,7 +43,7 @@ function calculateCashflows() {
   }
 
   function initializeResultsDisplays(){
-    this.resultsArray = [];
+    this.subExpensesArray = [];
 
     var r1 = new Result();
     r1.name = 'O+M';
@@ -65,10 +65,10 @@ function calculateCashflows() {
     r4.fixedCost = 500;
     r4.fractionOfProjectSize = 0.02;
 
-    this.resultsArray.push(r1);
-    this.resultsArray.push(r2);
-    this.resultsArray.push(r3);
-    this.resultsArray.push(r4);
+    this.subExpensesArray.push(r1);
+    this.subExpensesArray.push(r2);
+    this.subExpensesArray.push(r3);
+    this.subExpensesArray.push(r4);
   }
 
   function getValuesFromSliders(){
@@ -127,16 +127,16 @@ function calculateCashflows() {
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
 
     // Create and display broken out subpayments
-    for(var i = 0; i<this.resultsArray.length; i++){
-      r = resultsArray[i];
+    for(var i = 0; i<this.subExpensesArray.length; i++){
+      r = subExpensesArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
       appendSubPaymentResultDomElements(r);
     };
 
     // Put subpayment information in global to be passed to services.
     monthlyResults = [];
-    for(var i = 0; i<this.resultsArray.length; i++){
-      r = resultsArray[i];
+    for(var i = 0; i<this.subExpensesArray.length; i++){
+      r = subExpensesArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
 
       var newResult = {};
@@ -155,8 +155,8 @@ function calculateCashflows() {
     // Add headers.
     dataArray.push(['Expense', 'Per Year']);
 
-    for(var i = 0; i<this.resultsArray.length; i++){
-      r = resultsArray[i];
+    for(var i = 0; i<this.subExpensesArray.length; i++){
+      r = subExpensesArray[i];
       var dataElement = [r.name, r.value ]
       dataArray.push(dataElement);
     };

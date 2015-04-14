@@ -47,7 +47,7 @@
 
   <body ng-controller="solarCtrl as calculator">
 
-    <p>Results:  {{calculator.annualIncome}}.</p>
+    <p>Annual Income:  {{calculator.annualIncome}}.</p>
 
 
     <div class='outer-container'>
@@ -57,9 +57,25 @@
     <div class='chart-container'>
       <span id='monthly-payment-result'> $450,000</span>
 
-      <span id='-monthly-payment-result'> {{calculator.monthlyPayment}}</span>
+      <span id='-monthly-payment-result'> {{calculator.annualExpensesTotal}}</span>
       <div id='donutchart' > </div>
     </div>
+
+    <div class='numeric-outputs-div'>
+      <div class='numeric-outputs-centering-div2'>
+        <!-- result divs are inserted here dynamically by Angular. -->
+
+        <ul>
+          <div class='result-cost' ng-repeat="x in calculator.results">
+              $ {{x.value}}
+              <br>
+              {{x.outputLabel}}
+          </div>
+        </ul>
+
+      </div>
+    </div>
+
 
 
     <div class='sliders-div'>

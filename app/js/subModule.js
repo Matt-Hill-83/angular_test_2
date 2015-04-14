@@ -4,9 +4,9 @@ angular.module('subModule', [])
   this.inputsArray = [];
   this.inputsHash = {};
   this.annualIncome = 0;
-  this.resultsArray = [];
-  this.monthlyPayment;
-  this.monthlyPaymentStr;
+  this.subExpensesArray = [];
+  this.annualExpensesTotal;
+  this.annualExpensesTotalStr;
 
   this.initializeResultsDisplays = function(){
     var r1 = new Result();
@@ -29,10 +29,10 @@ angular.module('subModule', [])
     r4.fixedCost = 500;
     r4.fractionOfProjectSize = 0.02;
 
-    this.resultsArray.push(r1);
-    this.resultsArray.push(r2);
-    this.resultsArray.push(r3);
-    this.resultsArray.push(r4);
+    this.subExpensesArray.push(r1);
+    this.subExpensesArray.push(r2);
+    this.subExpensesArray.push(r3);
+    this.subExpensesArray.push(r4);
   }
 
   this.initializeInputsDisplays = function(){
@@ -70,7 +70,6 @@ angular.module('subModule', [])
     return this.inputsArray;
   }
 
-
   this.createInputsHash = function(inputsArray) {
     for(var i = 0; i < inputsArray.length; i++){
       var inputObject = inputsArray[i];
@@ -100,18 +99,18 @@ angular.module('subModule', [])
     var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
     var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
     var numOverDenom = numerator/denominator;
-    this.monthlyPayment = loanAmount * numOverDenom/10;
-    this.monthlyPaymentStr = this.monthlyPayment.toFixed(0).insertComma();
-    console.log(this.monthlyPayment);
+    this.annualExpensesTotal = loanAmount * numOverDenom/10;
+    this.annualExpensesTotalStr = this.annualExpensesTotal.toFixed(0).insertComma();
+    console.log(this.annualExpensesTotal);
 
-    return this.monthlyPayment;
+    return this.annualExpensesTotal;
   };
 
   this.calcAnnualSubExpenses = function(){
     // Create and display broken out subpayments
-    for(var i = 0; i<this.resultsArray.length; i++){
-      r = resultsArray[i];
-      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
+    for(var i = 0; i<this.subExpensesArray.length; i++){
+      r = subExpensesArray[i];
+      r.value = r.fixedCost + this.annualExpensesTotal * r.fractionOfProjectSize;
       appendSubPaymentResultDomElements(r);
     };
   };
@@ -123,9 +122,8 @@ angular.module('subModule', [])
     calcAnnualExpenses: this.calcAnnualExpenses,
     inputsHash: this.inputsHash,
     inputsArray: this.inputsArray,
-    resultsArray: this.resultsArray,
+    subExpensesArray: this.subExpensesArray,
     calcAnnualSubExpenses: this.calcAnnualSubExpenses
-    // calcResults: this.calcResults
   };
 
 });
