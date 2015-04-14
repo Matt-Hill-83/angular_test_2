@@ -1,3 +1,3 @@
-# angular-seed — the seed for AngularJS apps
+# Solar Pocket ProForma
 
-This is my test application for learning [AngularJS](http://angularjs.org/) web app.
+This application distills a generic solar farm financial model into a mobile sized interface, while preserving the power and flexibility of the full model.

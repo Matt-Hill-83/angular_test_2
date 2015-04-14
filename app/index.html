@@ -34,7 +34,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
 
     <script src="js/testservice.js"></script>
-    <script src="js/finance2.js"></script>
+    <script src="js/subModule.js"></script>
     <script src="js/app.js"></script>
 
     <script src="components/version/version.js"></script>
@@ -50,10 +50,11 @@
 
     <h3>A demonstration of how to access a Slider Control</h3>
 
-    <input type="range" id="Input1" ng-model='calculator.priceSlider'>
+    <input type="range" id="Input1" ng-model='calculator.input1'>
 
 
-    <p>Slider Value:  {{calculator.priceSlider}}.</p>
+    <p>Slider Value:  {{calculator.input1}}.</p>
+    <p>Output1:  {{calculator.output1(calculator.input1)}}.</p>
 
 
 

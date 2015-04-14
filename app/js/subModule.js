@@ -1,4 +1,4 @@
-angular.module('finance2', [])
+angular.module('subModule', [])
 .factory('currencyConverter', function() {
   var currencies = ['USD', 'EUR', 'CNY'];
   var usdToForeignRates = {
