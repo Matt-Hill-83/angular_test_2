@@ -1,8 +1,8 @@
 // Create global to talk to service
 monthlyResults = [
-{outputLabel:'O+M',value:'9999'},
-{outputLabel:'Hege',value:'Sweden'},
-{outputLabel:'Kai',value:'Denmark'}];
+{outputLabel:'output1',value:'9999'},
+{outputLabel:'output2',value:'Sweden'},
+{outputLabel:'output3',value:'Denmark'}];
 
 
 // Monkey patch in new function on String.prototype to format currency numbers

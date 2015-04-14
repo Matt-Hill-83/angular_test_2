@@ -23,6 +23,19 @@ angular.module('myApp', ['testService', 'subModule'])
 
   this.results = monthlyResults;
 
+  this.getResults = function getResults(){
+    var inputsHash = {
+      'input1': 10,
+      'input2': 20,
+      'input3': 30,
+      'input4': 40,
+    };
+
+    console.log(inputsHash);
+    console.log(inputsHash['input1']);
+    return currencyConverter.calcAnnualIncome(inputsHash);
+  };
+
 
 
 }]);

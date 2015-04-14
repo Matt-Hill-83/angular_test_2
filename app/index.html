@@ -46,15 +46,11 @@
 
   <body ng-controller="TestController as calculator">
 
-
-
-    <h3>A demonstration of how to access a Slider Control</h3>
-
     <input type="range" id="Input1" ng-model='calculator.input1'>
-
 
     <p>Slider Value:  {{calculator.input1}}.</p>
     <p>Output1:  {{calculator.output1(calculator.input1)}}.</p>
+    <p>Results:  {{calculator.getResults()}}.</p>
 
 
 
