@@ -44,3 +44,11 @@ Costs: <input type="number" min="0" ng-model="calculator.mycost">
         </span>
         <button class="btn" ng-click="calculator.pay()">Pay</button>
       </div>
+
+
+      this.total = function total(outCurr) {
+        return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
+      };
+      this.pay = function pay() {
+        window.alert("Thanks!");
+      };
