@@ -4,6 +4,7 @@ angular.module('subModule', [])
   var inputsArray = [];
   var inputsHash = {};
   var annualIncome = 0;
+  var resultsArray = [];
 
   this.calcAnnualIncome = function (inputsHash){
     annualIncome = inputsHash['projectCost'] +
@@ -13,13 +14,40 @@ angular.module('subModule', [])
   };
 
   this.createInputsHash = function(inputsArray) {
-    // debugger
     for(var i = 0; i < inputsArray.length; i++){
       var inputObject = inputsArray[i];
       inputsHash[inputObject.name] = inputObject.value;
     }
     return inputsHash;
   };
+
+  this.initializeResultsDisplays = function initializeResultsDisplays(){
+    var r1 = new Result();
+    r1.name = 'O+M';
+    r1.fixedCost = 500;
+    r1.fractionOfProjectSize = 0.05;
+
+    var r2 = new Result();
+    r2.name = 'Inverters';
+    r2.fixedCost = 500;
+    r2.fractionOfProjectSize = 0.04;
+
+    var r3 = new Result();
+    r3.name = 'Insurance';
+    r3.fixedCost = 500;
+    r3.fractionOfProjectSize = 0.03;
+
+    var r4 = new Result();
+    r4.name = 'Debt Service';
+    r4.fixedCost = 500;
+    r4.fractionOfProjectSize = 0.02;
+
+    resultsArray.push(r1);
+    resultsArray.push(r2);
+    resultsArray.push(r3);
+    resultsArray.push(r4);
+  }
+
 
 
 
@@ -62,6 +90,7 @@ angular.module('subModule', [])
     calcAnnualIncome: this.calcAnnualIncome,
     initializeInputsDisplays: this.initializeInputsDisplays,
     createInputsHash: this.createInputsHash
+    // calcResults: this.calcResults
   };
 
 });
