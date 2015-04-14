@@ -46,40 +46,12 @@
 
   <body ng-controller="TestController as calculator">
 
-    <input type="range" id="Input1" ng-model='calculator.input1'>
+    <input type="range" id="Input2" ng-model='calculator.input2'>
+    <input type="range" id="Input3" ng-model='calculator.input3'>
+    <input type="range" id="Input4" ng-model='calculator.input4'>
 
     <p>Slider Value:  {{calculator.input1}}.</p>
-    <p>Output1:  {{calculator.output1(calculator.input1)}}.</p>
     <p>Results:  {{calculator.getResults()}}.</p>
-
-
-
-
-
-
-
-
-
-
-      <b>Invoice:</b>
-      <div>
-        Quantity: <input type="number" min="0" ng-model="calculator.qty" required >
-      </div>
-      <div>
-        Costs: <input type="number" min="0" ng-model="calculator.cost" required >
-        <select ng-model="calculator.inCurr">
-          <option ng-repeat="c in calculator.currencies">{{c}}</option>
-        </select>
-      </div>
-      <div>
-        <b>Total:</b>
-        <span ng-repeat="c in calculator.currencies">
-          {{calculator.total(c) | currency:c}}
-        </span>
-        <button class="btn" ng-click="calculator.pay()">Pay</button>
-      </div>
-
-
 
 
     <!-- This button is a hack to get my directives to trigger -->
@@ -93,6 +65,35 @@
       <span id='monthly-payment-result'> $450,000</span>
       <div id='donutchart' > </div>
     </div>
+
+
+    <div class='sliders-div'>
+
+      <div id='slider-box-template' class='slider-box'>
+          <div class='slider-title'>Project Cost ($) </div>
+          <div class='slider-data-num' id='home-price-result' >{{calculator.input1}} </div>
+          <div>
+            <input id="Input1" ng-model='calculator.input1' class='mySlider' type='range' min='0' max='2000000' value='400000' step='0.5' />
+
+          </div>
+      </div>
+
+      <div id='test2' class='slider-box'>
+          <div class='slider-title'>Owner Equity (%) </div>
+          <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
+          </div>
+          <div class='slider-data-num' id='down-payment-result'>$80k </div>
+      </div>
+
+      <div id='test3' class='slider-box'>
+          <div class='slider-title'>Interest Rate (WACC) (%) </div>
+          <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
+          </div>
+          <div class='slider-data-num' id='interest-rate-result'>4.50% </div>
+      </div>
+
+    </div> <!-- sliders-div -->
+
 
     <div class='numeric-outputs-div'>
       <div class='numeric-outputs-centering-div'>

@@ -148,7 +148,7 @@ function calculateCashflows() {
 
     };
 
-    console.log(monthlyResults);
+    // console.log(monthlyResults);
 
 
   };

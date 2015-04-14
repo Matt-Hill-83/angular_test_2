@@ -11,11 +11,11 @@ angular.module('subModule', [])
   };
 
   var calcAnnualIncome = function (inputsHash){
-    console.log(inputsHash);
     var annualIncome = inputsHash['input1'] +
                        inputsHash['input2'] +
                        inputsHash['input3'] +
                        inputsHash['input4'];
+    // console.log('annual income: ' + annualIncome);
     return annualIncome;
   };
 
