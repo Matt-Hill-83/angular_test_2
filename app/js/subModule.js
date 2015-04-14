@@ -1,18 +1,18 @@
 angular.module('subModule', [])
 .factory('solarCalculator', function() {
 
-  var inputsArray = [];
+  this.inputsArray = [];
   this.inputsHash = {};
-  var annualIncome = 0;
-  var resultsArray = [];
+  this.annualIncome = 0;
+  this.resultsArray = [];
   this.monthlyPayment;
   this.monthlyPaymentStr;
 
   this.calcAnnualIncome = function (inputsHash){
-    annualIncome = inputsHash['projectCost'] +
+    this.annualIncome = inputsHash['projectCost'] +
                        inputsHash['ownerEquity'] +
                        inputsHash['interestRate'];
-    return annualIncome;
+    return this.annualIncome;
   };
 
   this.createInputsHash = function(inputsArray) {
@@ -46,10 +46,10 @@ angular.module('subModule', [])
     r4.fixedCost = 500;
     r4.fractionOfProjectSize = 0.02;
 
-    resultsArray.push(r1);
-    resultsArray.push(r2);
-    resultsArray.push(r3);
-    resultsArray.push(r4);
+    this.resultsArray.push(r1);
+    this.resultsArray.push(r2);
+    this.resultsArray.push(r3);
+    this.resultsArray.push(r4);
   }
 
   this.initializeInputsDisplays = function initializeInputsDisplays(){
@@ -80,15 +80,15 @@ angular.module('subModule', [])
     i3.max = 30;
     i3.step = 1;
 
-    inputsArray.push(i1);
-    inputsArray.push(i2);
-    inputsArray.push(i3);
+    this.inputsArray.push(i1);
+    this.inputsArray.push(i2);
+    this.inputsArray.push(i3);
 
-    return inputsArray;
+    return this.inputsArray;
   }
 
   this.calcMonthlyPayment = function calcMonthlyPayment(){
-    this.createInputsHash(inputsArray);
+    this.createInputsHash(this.inputsArray);
     // Breakout of monthly payment calculation
     var projectCost = this.inputsHash.projectCost;
     var ownerEquity = this.inputsHash.ownerEquity;
@@ -115,7 +115,9 @@ angular.module('subModule', [])
     initializeInputsDisplays: this.initializeInputsDisplays,
     createInputsHash: this.createInputsHash,
     calcMonthlyPayment: this.calcMonthlyPayment,
-    inputsHash: this.inputsHash
+    inputsHash: this.inputsHash,
+    inputsArray: this.inputsArray,
+    resultsArray: this.resultsArray
     // calcResults: this.calcResults
   };
 
