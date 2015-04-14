@@ -8,24 +8,7 @@ angular.module('subModule', [])
   this.monthlyPayment;
   this.monthlyPaymentStr;
 
-  this.calcAnnualIncome = function (inputsHash){
-    this.annualIncome = parseInt(inputsHash['projectCost']) +
-                       parseInt(inputsHash['ownerEquity']) +
-                       parseInt(inputsHash['interestRate']);
-    return (this.annualIncome);
-  };
-
-  this.createInputsHash = function(inputsArray) {
-    // Is this necessary?
-    that = this;
-    for(var i = 0; i < inputsArray.length; i++){
-      var inputObject = inputsArray[i];
-      that.inputsHash[inputObject.name] = inputObject.value;
-    }
-    return this.inputsHash;
-  };
-
-  this.initializeResultsDisplays = function initializeResultsDisplays(){
+  this.initializeResultsDisplays = function(){
     var r1 = new Result();
     r1.name = 'O+M';
     r1.fixedCost = 500;
@@ -52,7 +35,7 @@ angular.module('subModule', [])
     this.resultsArray.push(r4);
   }
 
-  this.initializeInputsDisplays = function initializeInputsDisplays(){
+  this.initializeInputsDisplays = function(){
     var i1 = new Input();
     i1.name = 'projectCost';
     i1.displayName = 'Project Cost ($)';
@@ -87,15 +70,30 @@ angular.module('subModule', [])
     return this.inputsArray;
   }
 
-  this.calcMonthlyPayment = function calcMonthlyPayment(){
+
+  this.createInputsHash = function(inputsArray) {
+    for(var i = 0; i < inputsArray.length; i++){
+      var inputObject = inputsArray[i];
+      this.inputsHash[inputObject.name] = inputObject.value;
+    }
+    return this.inputsHash;
+  };
+
+  // This is just a dummy calc for a test.
+  this.calcAnnualIncome = function (inputsHash){
+    this.annualIncome = parseInt(inputsHash['projectCost']) +
+                       parseInt(inputsHash['ownerEquity']) +
+                       parseInt(inputsHash['interestRate']);
+    return (this.annualIncome);
+  };
+
+  this.calcMonthlyPayment = function(){
     this.createInputsHash(this.inputsArray);
     // Breakout of monthly payment calculation
     var projectCost = this.inputsHash.projectCost;
     var ownerEquity = this.inputsHash.ownerEquity;
     var monthlyInterestRate = this.inputsHash.interestRate/12/100;
     var termInYears = 1;
-
-    // var monthlyInterestRate = this.interestRate/12/100;
 
     var loanAmount = projectCost - (ownerEquity/100)*projectCost;
 
@@ -108,6 +106,34 @@ angular.module('subModule', [])
 
     return this.monthlyPayment;
   };
+
+  this.updateMonthlyPaymentResults = function(){
+    var monthlyPaymentResult = document.getElementById("monthly-payment-result");
+    monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
+
+    // Create and display broken out subpayments
+    for(var i = 0; i<this.resultsArray.length; i++){
+      r = resultsArray[i];
+      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
+      appendSubPaymentResultDomElements(r);
+    };
+
+    // Put subpayment information in global to be passed to services.
+    monthlyResults = [];
+    for(var i = 0; i<this.resultsArray.length; i++){
+      r = resultsArray[i];
+      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
+
+      var newResult = {};
+      newResult['outputLabel'] = r.name;
+      newResult['value'] = r.value.toFixed(0).insertComma();
+
+      monthlyResults.push(newResult);
+      $("#hidden-button").click();
+
+    };
+  };
+
 
 
   return {

@@ -147,10 +147,6 @@ function calculateCashflows() {
       $("#hidden-button").click();
 
     };
-
-    // console.log(monthlyResults);
-
-
   };
 
   function parseDataForPieChart(){
