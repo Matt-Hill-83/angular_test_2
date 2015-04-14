@@ -87,7 +87,7 @@ angular.module('subModule', [])
     return (this.annualIncome);
   };
 
-  this.calcMonthlyPayment = function(){
+  this.calcAnnualExpenses = function(){
     this.createInputsHash(this.inputsArray);
     // Breakout of monthly payment calculation
     var projectCost = this.inputsHash.projectCost;
@@ -107,43 +107,24 @@ angular.module('subModule', [])
     return this.monthlyPayment;
   };
 
-  this.updateMonthlyPaymentResults = function(){
-    var monthlyPaymentResult = document.getElementById("monthly-payment-result");
-    monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
-
+  this.calcAnnualSubExpenses = function(){
     // Create and display broken out subpayments
     for(var i = 0; i<this.resultsArray.length; i++){
       r = resultsArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
       appendSubPaymentResultDomElements(r);
     };
-
-    // Put subpayment information in global to be passed to services.
-    monthlyResults = [];
-    for(var i = 0; i<this.resultsArray.length; i++){
-      r = resultsArray[i];
-      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
-
-      var newResult = {};
-      newResult['outputLabel'] = r.name;
-      newResult['value'] = r.value.toFixed(0).insertComma();
-
-      monthlyResults.push(newResult);
-      $("#hidden-button").click();
-
-    };
   };
-
-
 
   return {
     calcAnnualIncome: this.calcAnnualIncome,
     initializeInputsDisplays: this.initializeInputsDisplays,
     createInputsHash: this.createInputsHash,
-    calcMonthlyPayment: this.calcMonthlyPayment,
+    calcAnnualExpenses: this.calcAnnualExpenses,
     inputsHash: this.inputsHash,
     inputsArray: this.inputsArray,
-    resultsArray: this.resultsArray
+    resultsArray: this.resultsArray,
+    calcAnnualSubExpenses: this.calcAnnualSubExpenses
     // calcResults: this.calcResults
   };
 
