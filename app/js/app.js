@@ -38,21 +38,21 @@ angular.module('myApp', ['testService', 'subModule'])
     i1.step = 1;
 
     var i2 = new Input();
-    i2.name = 'projectCost';
-    i2.displayName = 'Project Cost ($)';
-    i2.value = 1400 * 1000;
-    i2.valueString = '1,500,000';
+    i2.name = 'ownerEquity';
+    i2.displayName = 'Owner Equity (%)';
+    i2.value = 25;
+    i2.valueString = 'zzz';
     i2.min = 0;
-    i2.max = 2000 * 1000;
+    i2.max = 100;
     i2.step = 1;
 
     var i3 = new Input();
-    i3.name = 'projectCost';
-    i3.displayName = 'Project Cost ($)';
-    i3.value = 1400 * 1000;
-    i3.valueString = '1,600,000';
+    i3.name = 'interestRate';
+    i3.displayName = 'Interest Rate (WACC) (%)';
+    i3.value = 12;
+    i3.valueString = 'xxx';
     i3.min = 0;
-    i3.max = 2000 * 1000;
+    i3.max = 30;
     i3.step = 1;
 
 
