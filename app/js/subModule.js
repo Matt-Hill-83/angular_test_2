@@ -9,10 +9,10 @@ angular.module('subModule', [])
   this.monthlyPaymentStr;
 
   this.calcAnnualIncome = function (inputsHash){
-    this.annualIncome = inputsHash['projectCost'] +
-                       inputsHash['ownerEquity'] +
-                       inputsHash['interestRate'];
-    return this.annualIncome;
+    this.annualIncome = parseInt(inputsHash['projectCost']) +
+                       parseInt(inputsHash['ownerEquity']) +
+                       parseInt(inputsHash['interestRate']);
+    return (this.annualIncome);
   };
 
   this.createInputsHash = function(inputsArray) {
