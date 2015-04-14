@@ -8,7 +8,7 @@ angular.module('subModule', [])
   this.annualExpensesTotal;
   this.annualExpensesTotalStr;
 
-  this.initializeResultsDisplays = function(){
+  this.initSubExpensesDisplays = function(){
     var r1 = new Result();
     r1.name = 'O+M';
     r1.fixedCost = 500;
@@ -35,7 +35,7 @@ angular.module('subModule', [])
     this.subExpensesArray.push(r4);
   }
 
-  this.initializeInputsDisplays = function(){
+  this.initInputsDisplays = function(){
     var i1 = new Input();
     i1.name = 'projectCost';
     i1.displayName = 'Project Cost ($)';
@@ -108,15 +108,16 @@ angular.module('subModule', [])
   this.calcAnnualSubExpenses = function(){
     // Create and display broken out subpayments
     for(var i = 0; i<this.subExpensesArray.length; i++){
-      r = subExpensesArray[i];
+      r = this.subExpensesArray[i];
       r.value = r.fixedCost + this.annualExpensesTotal * r.fractionOfProjectSize;
-      appendSubPaymentResultDomElements(r);
     };
+    return this.subExpensesArray;
   };
 
   return {
     calcAnnualIncome: this.calcAnnualIncome,
-    initializeInputsDisplays: this.initializeInputsDisplays,
+    initSubExpensesDisplays: this.initSubExpensesDisplays,
+    initInputsDisplays: this.initInputsDisplays,
     createInputsHash: this.createInputsHash,
     calcAnnualExpenses: this.calcAnnualExpenses,
     inputsHash: this.inputsHash,
