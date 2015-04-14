@@ -47,10 +47,6 @@
 
   <body ng-controller="TestController as calculator">
 
-    <input type="range" id="Input2" ng-model='calculator.input2'>
-    <input type="range" id="Input3" ng-model='calculator.input3'>
-    <input type="range" id="Input4" ng-model='calculator.input4'>
-
     <p>Slider Value:  {{calculator.input1}}.</p>
     <p>Results:  {{calculator.getResults()}}.</p>
 
@@ -77,7 +73,7 @@
               <div class='slider-title'>{{x.displayName}}</div>
               <div class='slider-data-num' id=''>{{x.value}} </div>
               <div>
-                <input class='mySlider' type='range' id="" ng-model=x.value min='{{x.min}}' max='{{x.max}}' value='400000' step='{{x.step}}' />
+                <input class='mySlider' type='range' id="" ng-model=x.value min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
               </div>
           </div>
 
