@@ -8,11 +8,6 @@ angular.module('subModule', [])
   this.monthlyPayment;
   this.monthlyPaymentStr;
 
-  // this.inputsHash = function inputsHash(){
-  //   return this.inputsHash;
-  // };
-
-
   this.calcAnnualIncome = function (inputsHash){
     annualIncome = inputsHash['projectCost'] +
                        inputsHash['ownerEquity'] +
@@ -92,8 +87,8 @@ angular.module('subModule', [])
     return inputsArray;
   }
 
-
   this.calcMonthlyPayment = function calcMonthlyPayment(){
+    this.createInputsHash(inputsArray);
     // Breakout of monthly payment calculation
     var projectCost = this.inputsHash.projectCost;
     var ownerEquity = this.inputsHash.ownerEquity;
@@ -110,7 +105,7 @@ angular.module('subModule', [])
     this.monthlyPayment = loanAmount * numOverDenom/10;
     this.monthlyPaymentStr = this.monthlyPayment.toFixed(0).insertComma();
     console.log(this.monthlyPayment);
-    
+
     return this.monthlyPayment;
   };
 

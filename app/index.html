@@ -47,12 +47,9 @@
 
   <body ng-controller="solarCtrl as calculator">
 
-    <!-- <p>Slider Value:  {{calculator.input1}}.</p>
-    <p>Results:  {{calculator.getResults()}}.</p> -->
+    <p>Results:  {{calculator.annualIncome}}.</p>
+    Costs: <input type="number" min="0" ng-model="calculator.annualIncome" required >
 
-
-    <!-- This button is a hack to get my directives to trigger -->
-    <button id='hidden-button' class="btn hidden-button" ng-click="calculator.pay()">Pay</button>
 
     <div class='outer-container'>
     <div class='header-bar'>Solar Cashflow Estimator </div>
@@ -75,7 +72,7 @@
               <div class='slider-title'>{{x.displayName}}</div>
               <div class='slider-data-num' id=''>{{x.value}} </div>
               <div>
-                <input class='mySlider' type='range' id="" ng-model=x.value min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
+                <input class='mySlider' type='range' id="" ng-model=x.value ng-click="calculator.calcMonthlyPayment()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
               </div>
           </div>
 
