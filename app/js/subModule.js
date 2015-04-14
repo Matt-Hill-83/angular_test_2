@@ -1,27 +1,27 @@
 angular.module('subModule', [])
-.factory('currencyConverter', function() {
-
+.factory('solarCalculator', function() {
 
   var inputsArray = [];
+  var inputsHash = {};
+  var annualIncome = 0;
 
-  // var currencies = ['USD', 'EUR', 'CNY'];
-  // var usdToForeignRates = {
-  //   USD: 1,
-  //   EUR: 0.74,
-  //   CNY: 6.09
-  // };
-  // var convert = function (amount, inCurr, outCurr) {
-  //   return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
-  // };
-
-  var calcAnnualIncome = function (inputsHash){
-    var annualIncome = inputsHash['input1'] +
-                       inputsHash['input2'] +
-                       inputsHash['input3'] +
-                       inputsHash['input4'];
-    // console.log('annual income: ' + annualIncome);
+  this.calcAnnualIncome = function (inputsHash){
+    annualIncome = inputsHash['projectCost'] +
+                       inputsHash['ownerEquity'] +
+                       inputsHash['interestRate'];
     return annualIncome;
   };
+
+  this.createInputsHash = function(inputsArray) {
+    // debugger
+    for(var i = 0; i < inputsArray.length; i++){
+      var inputObject = inputsArray[i];
+      inputsHash[inputObject.name] = inputObject.value;
+    }
+    return inputsHash;
+  };
+
+
 
   this.initializeInputsDisplays = function initializeInputsDisplays(){
     var i1 = new Input();
@@ -58,22 +58,10 @@ angular.module('subModule', [])
     return inputsArray;
   }
 
-
-
-
-
-
-
-
-
-
-
   return {
-    // currencies: currencies,
-    // convert: convert,
-    calcAnnualIncome: calcAnnualIncome,
-    initializeInputsDisplays: this.initializeInputsDisplays
-
+    calcAnnualIncome: this.calcAnnualIncome,
+    initializeInputsDisplays: this.initializeInputsDisplays,
+    createInputsHash: this.createInputsHash
   };
 
 });
