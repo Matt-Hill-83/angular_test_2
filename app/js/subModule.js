@@ -2,9 +2,16 @@ angular.module('subModule', [])
 .factory('solarCalculator', function() {
 
   var inputsArray = [];
-  var inputsHash = {};
+  this.inputsHash = {};
   var annualIncome = 0;
   var resultsArray = [];
+  this.monthlyPayment;
+  this.monthlyPaymentStr;
+
+  // this.inputsHash = function inputsHash(){
+  //   return this.inputsHash;
+  // };
+
 
   this.calcAnnualIncome = function (inputsHash){
     annualIncome = inputsHash['projectCost'] +
@@ -14,11 +21,13 @@ angular.module('subModule', [])
   };
 
   this.createInputsHash = function(inputsArray) {
+    // Is this necessary?
+    that = this;
     for(var i = 0; i < inputsArray.length; i++){
       var inputObject = inputsArray[i];
-      inputsHash[inputObject.name] = inputObject.value;
+      that.inputsHash[inputObject.name] = inputObject.value;
     }
-    return inputsHash;
+    return this.inputsHash;
   };
 
   this.initializeResultsDisplays = function initializeResultsDisplays(){
@@ -47,9 +56,6 @@ angular.module('subModule', [])
     resultsArray.push(r3);
     resultsArray.push(r4);
   }
-
-
-
 
   this.initializeInputsDisplays = function initializeInputsDisplays(){
     var i1 = new Input();
@@ -86,10 +92,35 @@ angular.module('subModule', [])
     return inputsArray;
   }
 
+
+  this.calcMonthlyPayment = function calcMonthlyPayment(){
+    // Breakout of monthly payment calculation
+    var projectCost = this.inputsHash.projectCost;
+    var ownerEquity = this.inputsHash.ownerEquity;
+    var monthlyInterestRate = this.inputsHash.interestRate/12/100;
+    var termInYears = 1;
+
+    // var monthlyInterestRate = this.interestRate/12/100;
+
+    var loanAmount = projectCost - (ownerEquity/100)*projectCost;
+
+    var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
+    var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
+    var numOverDenom = numerator/denominator;
+    this.monthlyPayment = loanAmount * numOverDenom/10;
+    this.monthlyPaymentStr = this.monthlyPayment.toFixed(0).insertComma();
+    console.log(this.monthlyPayment);
+    
+    return this.monthlyPayment;
+  };
+
+
   return {
     calcAnnualIncome: this.calcAnnualIncome,
     initializeInputsDisplays: this.initializeInputsDisplays,
-    createInputsHash: this.createInputsHash
+    createInputsHash: this.createInputsHash,
+    calcMonthlyPayment: this.calcMonthlyPayment,
+    inputsHash: this.inputsHash
     // calcResults: this.calcResults
   };
 
