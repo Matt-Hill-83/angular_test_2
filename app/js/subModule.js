@@ -101,7 +101,6 @@ angular.module('subModule', [])
     var numOverDenom = numerator/denominator;
     this.annualExpensesTotal = loanAmount * numOverDenom/10;
     this.annualExpensesTotalStr = this.annualExpensesTotal.toFixed(0).insertComma();
-    console.log(this.annualExpensesTotal);
 
     return this.annualExpensesTotal;
   };

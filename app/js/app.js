@@ -10,7 +10,7 @@ angular.module('myApp', ['testService', 'subModule'])
   this.annualExpensesTotal = solarCalculator.calcAnnualExpenses();
 
   this.calcAnnualExpenses = function calcAnnualExpenses(){
-    this.annualExpensesTotal = solarCalculator.calcAnnualExpenses();
+    this.annualExpensesTotal = solarCalculator.calcAnnualExpenses().toFixed(0);
     this.annualIncome = solarCalculator.calcAnnualIncome(this.inputsHash);
     this.subExpensesArray = solarCalculator.calcAnnualSubExpenses();
   };

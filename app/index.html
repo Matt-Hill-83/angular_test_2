@@ -55,9 +55,8 @@
     <div class='first-text'>Sunny Meadows Solar Farm </div>
 
     <div class='chart-container'>
-      <span id='monthly-payment-result'> $450,000</span>
+      <span id='annual-expenses-total'> ${{calculator.annualExpensesTotal}}</span>
 
-      <span id='-monthly-payment-result'> {{calculator.annualExpensesTotal}}</span>
       <div id='donutchart' > </div>
     </div>
 
@@ -76,8 +75,6 @@
       </div>
     </div>
 
-
-
     <div class='sliders-div'>
 
       <ul>
@@ -90,10 +87,7 @@
                 <input class='mySlider' type='range' id="" ng-model=x.value ng-click="calculator.calcAnnualExpenses()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
               </div>
           </div>
-
         </div>
-
-
       </ul>
 
 

@@ -123,7 +123,7 @@ function calculateCashflows() {
   };
 
   function updateMonthlyPaymentResults(){
-    var monthlyPaymentResult = document.getElementById("monthly-payment-result");
+    var monthlyPaymentResult = document.getElementById("annual-expenses-total");
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
 
     // Create and display broken out subpayments
