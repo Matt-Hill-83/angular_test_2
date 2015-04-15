@@ -62,8 +62,8 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.numeric-outputs-centering-div2 {
-  margin-left: -23px;
+.numeric-outputs-centering-div {
+  /*margin-left: 16px;*/
   margin-top: -9px;
 }
 .result-cost {
@@ -90,7 +90,7 @@
     text-align: center;
 }
 .slider-box {
-    width: 300px;
+    /*width: 300px;*/
     height: 60px;
     position: relative;
     display: block;

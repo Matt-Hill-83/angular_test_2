@@ -25,7 +25,7 @@
     <script type='text/javascript'>
       google.load('visualization', '1', {packages:['corechart']});
       // Call the function
-      google.setOnLoadCallback(calculateCashflows);
+      // google.setOnLoadCallback(calculateCashflows);
     </script>
 
     <!-- In production use:
@@ -60,32 +60,30 @@
     </div>
 
     <div class='numeric-outputs-div'> <!-- Create array of output boxes. -->
-      <div class='numeric-outputs-centering-div2'>
+      <div class='numeric-outputs-centering-div'>
 
-        <ul>
+        <!-- <ul> -->
           <div class='result-cost' ng-repeat="x in calculator.SubExpensesDisplays">
               $ {{x.value}}
               <br>
               {{x.name}}
           </div>
-        </ul>
+        <!-- </ul> -->
 
       </div>
     </div>
 
     <div class='sliders-div'> <!-- Create array of input sliders -->
-      <ul>
-        <div class='xresult-cost' ng-repeat="x in calculator.inputsArray">
+      <div class='xresult-cost' ng-repeat="x in calculator.inputsArray">
 
-          <div id='slider-box-template' class='slider-box'>
-              <div class='slider-title'>{{x.displayName}}</div>
-              <div class='slider-data-num' id=''>{{x.value}} </div>
-              <div>
-                <input class='mySlider' type='range' id="" ng-model=x.value ng-click="calculator.calcAnnualExpenses()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
-              </div>
-          </div>
+        <div id='slider-box-template' class='slider-box'>
+            <div class='slider-title'>{{x.displayName}}</div>
+            <div class='slider-data-num' id=''>{{x.value}} </div>
+            <div>
+              <input class='mySlider' type='range' id="" ng-model=x.value ng-click="calculator.calcAnnualExpenses()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
+            </div>
         </div>
-      </ul>
+      </div>
     </div> <!-- sliders-div -->
 
   </body>
