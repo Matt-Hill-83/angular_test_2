@@ -18,7 +18,7 @@ String.prototype.insertComma = function() {
 
 'use strict';
 
-angular.module('myApp', ['testService', 'subModule'])
+angular.module('myApp', ['subModule'])
 .controller('solarCtrl', ['solarCalculator', function(solarCalculator) {
 
   this.inputsArray = solarCalculator.initInputsDisplays();
