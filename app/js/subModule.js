@@ -7,6 +7,18 @@ angular.module('subModule', [])
   this.subExpensesArray = [];
   this.annualExpensesTotal;
   this.annualExpensesTotalStr;
+  this.chart;
+
+  this.setGraphOptions = function(){
+    this.options = {
+      pieHole: 0.6,
+      'legend':'none',
+      backgroundColor: 'transparent',
+      pieSliceTextStyle: {
+      color: 'transparent',
+      },
+    };
+  };
 
   this.initSubExpensesDisplays = function(){
     var r1 = new Result();
@@ -114,6 +126,27 @@ angular.module('subModule', [])
     return this.subExpensesArray;
   };
 
+  this.parseDataForPieChart = function(){
+    // Create pie chart labels and values
+    var dataArray = [];
+    // Add headers.
+    dataArray.push(['Expense', 'Per Year']);
+
+    for(var i = 0; i<this.subExpensesArray.length; i++){
+      r = subExpensesArray[i];
+      var dataElement = [r.name, r.value ]
+      dataArray.push(dataElement);
+    };
+
+    this.chartData = google.visualization.arrayToDataTable(dataArray);
+    debugger
+  };
+
+  this.updatePieChart = function(){
+    this.chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+    this.chart.draw(this.chartData, this.options);
+  }
+
   return {
     calcAnnualIncome: this.calcAnnualIncome,
     initSubExpensesDisplays: this.initSubExpensesDisplays,
@@ -123,7 +156,10 @@ angular.module('subModule', [])
     inputsHash: this.inputsHash,
     inputsArray: this.inputsArray,
     subExpensesArray: this.subExpensesArray,
-    calcAnnualSubExpenses: this.calcAnnualSubExpenses
+    calcAnnualSubExpenses: this.calcAnnualSubExpenses,
+    parseDataForPieChart: this.parseDataForPieChart,
+    updatePieChart: this.updatePieChart,
+    setGraphOptions: this.setGraphOptions
   };
 
 });

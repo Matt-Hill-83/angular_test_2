@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  </head>
+
+  <body>
+    <input type='text' title='Tags' id='input' />
+    <br>
+    <br>
+    <input type='text' title='Tags' id='output' />
+  </body>
+  <script>
+
+
+    var inputObj = document.getElementById("input");
+    var outputObj = document.getElementById("output");
+
+    inputObj.addEventListener("click", clearOutputField);
+    inputObj.addEventListener("blur", populateOutputField);
+
+    $(document).ready(function() {
+
+        var aTags = ["ask","always", "all", "alright", "one", "foo", "blackberry", "tweet","force9", "westerners", "sport"];
+
+        $( "#input" ).autocomplete({
+            source: aTags,
+            select: function (event, ui) { populateOutputField(event, ui) }
+        });
+    });
+
+
+    function clearOutputField() {
+        outputObj.value = '';
+    }
+
+    function populateOutputField(event, ui) {
+        var selectedObj = ui.item;
+        var output = selectedObj.value
+        console.log(selectedObj.value);
+
+        outputObj.value = output;
+    }
+
+  </script>
+</html>
