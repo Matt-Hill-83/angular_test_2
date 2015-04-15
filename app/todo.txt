@@ -1,0 +1,19 @@
+
+
+To do:
+- create init function to trigger first display iteration
+- clean up numbers on GUI
+- add real math
+- change pie chart to bar chart
+- create spreadsheet style pro forma
+
+- add multiple solar farms
+- add multiple views
+- convert to spa
+- allow user to freeze and overlay scenarios
+- add rails back end
+
+
+
+
+Done:

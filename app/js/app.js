@@ -18,4 +18,6 @@ angular.module('myApp', ['subModule'])
     solarCalculator.parseDataForPieChart();
     solarCalculator.updatePieChart();
   };
+
+  this.calcAnnualExpenses();
 }]);
