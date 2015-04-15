@@ -8,6 +8,8 @@ angular.module('subModule', [])
   this.annualExpensesTotal;
   this.annualExpensesTotalStr;
   this.chart;
+  this.chartdata;
+  this.options;
 
   this.setGraphOptions = function(){
     this.options = {
@@ -133,13 +135,16 @@ angular.module('subModule', [])
     dataArray.push(['Expense', 'Per Year']);
 
     for(var i = 0; i<this.subExpensesArray.length; i++){
-      r = subExpensesArray[i];
+      r = this.subExpensesArray[i];
       var dataElement = [r.name, r.value ]
       dataArray.push(dataElement);
     };
-
+    console.log('subExpensesArray: ');
+    console.log(this.subExpensesArray[0].value);
+    console.log('total: ' + this.annualExpensesTotal);
+    console.log('data array: ' + dataArray[1][1]);
+    // debugger
     this.chartData = google.visualization.arrayToDataTable(dataArray);
-    debugger
   };
 
   this.updatePieChart = function(){

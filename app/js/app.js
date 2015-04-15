@@ -14,7 +14,6 @@ angular.module('myApp', ['testService', 'subModule'])
     this.annualExpensesTotal = solarCalculator.calcAnnualExpenses().toFixed(0);
     this.annualIncome = solarCalculator.calcAnnualIncome(this.inputsHash);
     this.SubExpensesDisplays = solarCalculator.calcAnnualSubExpenses();
-    debugger
     solarCalculator.setGraphOptions();
     solarCalculator.parseDataForPieChart();
     solarCalculator.updatePieChart();
