@@ -11,6 +11,7 @@ angular.module('myApp', ['subModule'])
 
   this.calcAnnualExpenses = function calcAnnualExpenses(){
     this.annualExpensesTotal = solarCalculator.calcAnnualExpenses().toFixed(0);
+    this.annualExpensesTotalStr = solarCalculator.annualExpensesTotalStr;
     this.annualIncome = solarCalculator.calcAnnualIncome(this.inputsHash);
     this.SubExpensesDisplays = solarCalculator.calcAnnualSubExpenses();
     solarCalculator.setGraphOptions();

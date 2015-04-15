@@ -156,7 +156,8 @@ angular.module('subModule', [])
     calcAnnualSubExpenses: this.calcAnnualSubExpenses,
     parseDataForPieChart: this.parseDataForPieChart,
     updatePieChart: this.updatePieChart,
-    setGraphOptions: this.setGraphOptions
+    setGraphOptions: this.setGraphOptions,
+    annualExpensesTotalStr: this.annualExpensesTotalStr
   };
 
 });
