@@ -14,8 +14,6 @@ angular.module('testService', [])
   // Grab names from global variable
   var names = monthlyResults;
 
-// console.log(monthlyResults);
-
   return {
     // currencies: currencies,
     // convert: convert,

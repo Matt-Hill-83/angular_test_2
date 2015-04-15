@@ -17,7 +17,5 @@ angular.module('myApp', ['testService', 'subModule'])
     solarCalculator.setGraphOptions();
     solarCalculator.parseDataForPieChart();
     solarCalculator.updatePieChart();
-
-    console.log(this.SubExpensesDisplays);
   };
 }]);

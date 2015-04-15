@@ -139,11 +139,6 @@ angular.module('subModule', [])
       var dataElement = [r.name, r.value ]
       dataArray.push(dataElement);
     };
-    console.log('subExpensesArray: ');
-    console.log(this.subExpensesArray[0].value);
-    console.log('total: ' + this.annualExpensesTotal);
-    console.log('data array: ' + dataArray[1][1]);
-    // debugger
     this.chartData = google.visualization.arrayToDataTable(dataArray);
   };
 
