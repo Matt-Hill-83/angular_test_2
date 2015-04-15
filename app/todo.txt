@@ -1,7 +1,7 @@
 
 
 To do:
-- create init function to trigger first display iteration
+- integrate D3
 - clean up numbers on GUI
 - add real math
 - change pie chart to bar chart
@@ -17,3 +17,4 @@ To do:
 
 
 Done:
+- create init function to trigger first display iteration
