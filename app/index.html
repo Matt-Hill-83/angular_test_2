@@ -38,8 +38,8 @@
   <body ng-controller="solarCtrl as calculator">
 
     <div class='outer-container'>
-    <div class='header-bar'>Solar Cashflow Estimator </div>
-    <div class='first-text'>Sunny Meadows Solar Farm </div>
+    <div class='header-bar'>Solar Cashflow Estimator</div>
+    <div class='first-text'>Sunny Meadows Solar Farm</div>
 
     <div class='chart-container'>
       <span id='annual-expenses-total'> ${{calculator.annualExpensesTotal}}</span>
@@ -50,7 +50,7 @@
     <div class='numeric-outputs-div'>
       <div class='numeric-outputs-centering-div'>
         <div class='result-cost' ng-repeat="x in calculator.SubExpensesDisplays">
-          $ {{x.value}}
+          ${{x.value}}
           <br>
           {{x.name}}
         </div>
@@ -62,9 +62,9 @@
       <div class='xresult-cost' ng-repeat="x in calculator.inputsArray">
         <div id='slider-box-template' class='slider-box'>
           <div class='slider-title'>{{x.displayName}}</div>
-          <div class='slider-data-num' id=''>{{x.value}} </div>
+          <div class='slider-data-num'>{{x.value}} </div>
           <div>
-            <input class='mySlider' type='range' id="" ng-model=x.value ng-click="calculator.calcAnnualExpenses()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
+            <input class='mySlider' type='range' ng-model=x.value ng-click="calculator.calcAnnualExpenses()" min='{{x.min}}' max='{{x.max}}' value='{{x.value}}' step='{{x.step}}' />
           </div>
         </div>
       </div>

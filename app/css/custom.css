@@ -38,7 +38,6 @@
     left: 50%;
     transform: translateX(-50%);
     top: 152px;
-
 }
 .numeric-outputs-div {
     background-color: white;
@@ -47,8 +46,6 @@
     position: relative;
     display: inline-block;
     border-bottom: 1px solid #D9D9D7;
-
-    /*margin-bottom: -4px;*/
 }
 
 .numeric-outputs-centering-div {
@@ -58,9 +55,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-/*.numeric-outputs-centering-div {
-  margin-top: -9px;
-}*/
+
 .result-cost {
     border: 1px black solid;
     font-family: 'Helvetica Neue';
