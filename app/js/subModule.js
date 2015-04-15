@@ -143,7 +143,7 @@ angular.module('subModule', [])
   };
 
   this.updatePieChart = function(){
-    this.chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+    this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
     this.chart.draw(this.chartData, this.options);
   }
 
