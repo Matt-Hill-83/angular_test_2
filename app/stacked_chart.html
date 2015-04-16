@@ -59,10 +59,37 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("data.csv", function(error, data) {
+//  My test data
+var data = [
+  // {State: "1", frequency: .08167},
+  {State: "A", frequency: .08167, frequency2: .08167},
+  {State: "Z", frequency: .00074, frequency2: .08167}
+];
+
+// State, a, b
+// Base Case,310504,552339
+// Start Date (+30),52083,85640
+
+// d3.csv("data.csv", function(error, data) {
+//   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+//
+//   data.forEach(function(d) {
+//     var y0 = 0;
+//     d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+//     d.total = d.ages[d.ages.length - 1].y1;
+//   });
+
+// d3.csv("data.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
 
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  // });
+
 console.log(data);
+
   data.forEach(function(d) {
     var y0 = 0;
     d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
