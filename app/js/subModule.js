@@ -10,6 +10,7 @@ angular.module('subModule', [])
   this.chart;
   this.chartdata;
   this.options;
+  this.scenarios;
 
   this.setGraphOptions = function(){
     this.options = {
@@ -154,6 +155,24 @@ angular.module('subModule', [])
       {Scenario: "Base Case4", OandM: 5000, Inverters: 1000},
       {Scenario: "Start +60days", OandM: 5000, Inverters: 1000}
     ];
+
+    this.data = [];
+
+    for(var j = 0; j<3; j++){
+
+      var newScenario = {};
+      newScenario['Scenario'] = 'test' + j ;
+
+      for(var i = 0; i < this.subExpensesArray.length; i++){
+        var exp = this.subExpensesArray[i];
+        newScenario[exp.name] = exp.value;
+      };
+      console.log(newScenario);
+      this.data.push(newScenario);
+    };
+
+
+
   };
 
   this.drawStackedChart = function(){
