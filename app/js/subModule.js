@@ -147,15 +147,6 @@ angular.module('subModule', [])
 
 
   this.createStackedChartData = function(){
-    //  My test data
-    this.data = [
-      {Scenario: "Base Case", OandM: 5000, Inverters: 4000},
-      {Scenario: "Base Case2", OandM: 5000, Inverters: 1000},
-      {Scenario: "Base Case3", OandM: 5000, Inverters: 1000},
-      {Scenario: "Base Case4", OandM: 5000, Inverters: 1000},
-      {Scenario: "Start +60days", OandM: 5000, Inverters: 1000}
-    ];
-
     this.data = [];
 
     for(var j = 0; j<3; j++){

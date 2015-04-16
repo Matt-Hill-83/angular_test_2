@@ -1,10 +1,9 @@
 
 
 To do:
-- integrate D3
+- add a button so that new scenarios can be saved
 - clean up numbers on GUI
 - add real math
-- change pie chart to bar chart
 - create spreadsheet style pro forma
 
 - add multiple solar farms
@@ -17,4 +16,6 @@ To do:
 
 
 Done:
+- integrate D3
 - create init function to trigger first display iteration
+- change pie chart to bar chart
