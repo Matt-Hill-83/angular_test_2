@@ -62,31 +62,16 @@ var svg = d3.select("body").append("svg")
 //  My test data
 var data = [
   // {State: "1", frequency: .08167},
-  {State: "A", frequency: .08167, frequency2: .08167},
-  {State: "Z", frequency: .00074, frequency2: .08167}
+  {State: "Base Case", OandM: 5000, Inverters: 4000},
+  {State: "Start +60days", OandM: 5000, Inverters: 1000}
 ];
 
-// State, a, b
-// Base Case,310504,552339
-// Start Date (+30),52083,85640
-
-// d3.csv("data.csv", function(error, data) {
-//   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
-//
-//   data.forEach(function(d) {
-//     var y0 = 0;
-//     d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
-//     d.total = d.ages[d.ages.length - 1].y1;
-//   });
-
-// d3.csv("data.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
 
   data.forEach(function(d) {
     var y0 = 0;
     d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
     d.total = d.ages[d.ages.length - 1].y1;
-  // });
 
 console.log(data);
 
